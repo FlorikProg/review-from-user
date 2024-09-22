@@ -1,0 +1,166 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Unbounded", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    background-color: #161618;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    
+}
+
+h2 {
+    font-family: "Unbounded", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+    max-width: 128px;
+    
+}
+
+
+
+.feedback-container {
+    border-radius: 15px;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    
+}
+
+.feedback-container h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.product-select {
+    margin-bottom: 25px;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    background-color: #2E2D2F;
+    border: 5px solid #2E2D2F;
+    color: white;
+    border-radius: 5px;
+    padding-right: 30px; /* Добавляем отступ справа для текста */
+    
+    /* Эти два свойства временно инвертируют направление и возвращают его обратно */
+/* Инвертируем направление, чтобы сдвинуть стрелку левее */
+    text-align: left; /* Чтобы текст оставался слева */
+}
+
+select option {
+    direction: ltr; /* Возвращаем нормальное направление для текста опций */
+}
+
+
+
+.message-input {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+    background-color: #2E2D2F;
+    border-radius: 10px;
+    padding: 10px;
+    border: none;
+}
+
+.message-input img {
+    margin-right: 10px;
+}
+
+.message-input textarea {
+    width: 100%;
+    background: none;
+    border: none;
+    color: #00A6E3;
+    resize: none;
+    font-size: 14px;
+    outline: none;
+    font-family: "Unbounded", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 15px;
+}
+
+.stars {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.star {
+    font-size: 30px;
+    color: #ccc;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+.star.selected {
+    color: gold;
+}
+
+.submit-btn {
+    background-color: #2E2D2F;
+    border: none;
+    margin-bottom: -10px;
+    padding: 20px;
+    border-radius: 100px;
+    color: white;
+    font-size: 16px;
+    width: 100%;
+    cursor: pointer;
+    font-family: "Unbounded", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.submit-btn:hover {
+    background-color: #3a3a3d;
+    
+}
+
+.thank-you {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+#product {
+    margin-top: 20px;
+    font-family: "Unbounded", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    overflow: hidden;
+
+
+}
+
+label {
+    font-family: "Unbounded", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    
+}
+
+p {
+    font-family: "Unbounded", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 350;
+    font-style: normal;
+    color: rgba(255, 255, 255, 0.500);
+    font-size: 12px
+}

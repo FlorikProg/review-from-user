@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="file/main.css">
+    <title>Обратная связь</title>
+</head>
+<body>
+
+<div class="feedback-container">
+    <h2 id="typing-effect"></h2>
+
+    <div class="product-select">
+        <label for="product">Выберите продукт👇</label>
+        <select id="product">
+            <option value="bot1">Бот 1</option>
+            <option value="bot2">Бот 2</option>
+        </select>
+    </div>
+
+    <div id="message-form" class="message-input">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Telegram_2019_Logo.svg" alt="Telegram" width="20px">
+        <textarea id="message" rows="1" placeholder="Сообщение..." required></textarea>
+    </div>
+
+    <p id="message-sent"></p>
+
+    <div class="stars" id="star-rating">
+        <span class="star" data-value="1">★</span>
+        <span class="star" data-value="2">★</span>
+        <span class="star" data-value="3">★</span>
+        <span class="star" data-value="4">★</span>
+        <span class="star" data-value="5">★</span>
+    </div>
+
+    <form id="message-form_btn">
+        <button type="submit" class="submit-btn">Отправить</button>
+    </form>
+
+</div>
+
+<script>
+    const stars = document.querySelectorAll('.star');
+    let selectedRating = 0;
+
+    stars.forEach(star => {
+        star.addEventListener('click', () => {
+            selectedRating = star.getAttribute('data-value');
+            updateStars(selectedRating);
+        });
+    });
+
+    function updateStars(rating) {
+        stars.forEach(star => {
+            if (star.getAttribute('data-value') <= rating) {
+                star.classList.add('selected');
+            } else {
+                star.classList.remove('selected');
+            }
+        });
+    }
+
+    const text = "Обратная связь 📞"; 
+    let index = 0;
+
+    function type() {
+        if (index < text.length) {
+            document.getElementById("typing-effect").innerHTML += text.charAt(index);
+            index++;
+            setTimeout(type, 100);
+        }
+    }
+
+    const text2 = "Сообщение будет доставлено лично администратору...";
+    let index2 = 0;
+
+    function type2() {
+        if (index2 < text2.length) {
+            document.getElementById("message-sent").innerHTML += text2.charAt(index2);
+            index2++;
+            setTimeout(type2, 100);
+        }
+    }
+    
+    type();
+    type2();
+    document.getElementById('message-form_btn').onsubmit = async function(e) {
+    e.preventDefault();
+    
+    const messageText = document.getElementById('message').value;
+    const product = document.getElementById('product').value;
+    const rating = selectedRating; // This should hold the correct rating value
+
+    // Debugging: Log the collected data to the console
+    console.log("Message Text:", messageText);
+    console.log("Selected Product:", product);
+    console.log("Selected Rating:", rating);
+
+    // Sending data to API
+    const response = await fetch('/submit', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ text: messageText, rating: rating, product: product }) // Ensure correct field names
+    });
+    
+    if (response.ok) {
+        alert('Сообщение отправлено');
+        document.getElementById('message').value = ''; // Clear input field
+        updateStars(0); // Reset star rating after submission
+    } else {
+        alert('Ошибка при отправке сообщения');
+    }
+};</script>
+
+</body>
+</html>
