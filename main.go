@@ -46,8 +46,8 @@ func handler(w http.ResponseWriter, r *http.Request) {
 // Функция для отправки сообщения в Telegram
 func sendToTelegram(text string, raiting string, product string) {
 
-	token := "7240748730:AAERMXYL4JUcaJUs1B2T4UIz22hquHrr05M"
-	chatID := "1529997307"
+	token := "Токен бота"
+	chatID := "id администратора"
 
 	message := fmt.Sprintf("<b>Новый отзыв🔥</b>\n\n<b>✅Продукт:</b> %s\n\n<b>⭐️Отзыв:</b> %s\n\n<b>💬Сообщение:</b> %s", product, raiting, text)
 
